@@ -18,23 +18,23 @@ public class Lab3P1_DiegoDiaz {
     public static void main(String[] args) {
 
         Scanner leer = new Scanner(System.in);
-        int EleccionEjer = 0;
+        int Eleccion = 0;
         
-        while (EleccionEjer != 4) {
+        while (Eleccion != 4) {
             
-            System.out.println("Main Menu:");
+            System.out.println("\nMain Menu:");
             System.out.println("1. El ADN mutante ");
             System.out.println("2. Tarjeta de identificacion ASCII");
             System.out.println("3. Codigo de evacuacion");
             System.out.println("4. Salir");
             System.out.print("Ingrese una opcion del Main Menu:");
-            EleccionEjer = leer.nextInt();
+            Eleccion = leer.nextInt();
             leer.nextLine();
             
             
-            switch (EleccionEjer){
+            switch (Eleccion){
                 case 1:
-                    System.out.println("El ADN mutante");
+                    System.out.println("\nEl ADN mutante");
                     boolean secuencia = false;
                     String secuenciaADN = "";
                     
@@ -120,19 +120,135 @@ public class Lab3P1_DiegoDiaz {
                         System.out.println("\n Existe un empate entre bases");
                       
                     } else {
-                        System.out.println("\nBase predominante" + nompredominante);
+                        System.out.println("\nBase predominante: " + nompredominante);
                     }
                     
                     double indice = Math.sqrt(secuenciaADN.length());
                     
                     System.out.println("Indice de estabilidad genetica: " + indice);
                     break;
-               
+                    
+                case 2:
+                    System.out.println("\nTarjeta de identificacion ");
+                    System.out.println("1. Tarjeta Normal");
+                    System.out.println("2. Tarjeta de emergencia");
+                    System.out.println("3. Salir");
+                    System.out.print("Seleccione una opcion: ");
+                    
+                    int opcion = leer.nextInt();
+                    leer.nextLine();
+                    
+                    if (opcion == 3){
+                        System.out.println("Regresando al main menu");
+                        break;
+                        
+                    } else if (opcion != 1 && opcion != 2) {
+                        System.out.println("Opcion invalida. regresando al main menu");
+                        break;
+                 
+                    }
+                    String codigo = "";
+                    
+                    if (opcion == 1) {
+                  
+                        while (codigo.isEmpty()) {
+                            System.out.print("\nIngrese un codigo");
+                            codigo = leer.nextLine();
+                     
+                        }
+                        codigo = codigo.toLowerCase();
+                    String signomas = (opcion == 1) ? "+" : "!";
+                    String signoexclamacion = (opcion == 1) ? "+" : "!";
+                    
+                    int largo = codigo.length() + 6; 
+                    String borde = signomas.repeat(largo);
+                    
+                    System.out.println("\n" + borde);
+                    System.out.println(signomas + "  " + codigo + "  " + signoexclamacion);
+                    System.out.println(borde);
+                    
+                    if (opcion == 2) {
+                        System.out.println("\n" + borde);
+                        System.out.println(signoexclamacion + " " + codigo + " " + signoexclamacion);
+                            
+                        }
+                    
+                  
+                    int letras = 0;
+                    int digitos = 0;
+                    int simbolos = 0;
+                    int sumadigitos = 0;
+                    
+                    System.out.println("\nAnalisis:");
+                    System.out.print("Caracteres encontrados: ");
+                    
+                    for (int i = 0; i < codigo.length(); i++) {
+                        char c = codigo.charAt(i);
+                        System.out.print(c + " "); 
+                        
+                        if (Character.isLetter(c)) {
+                            letras++;
+                        } else if (Character.isDigit(c)) {
+                            digitos++;
+                        sumadigitos += Character.getNumericValue(c);
+                        } else {
+                        simbolos++;
+                        }
+                    }
+                    
+                    System.out.println("\nCantidad de letras: " + letras);
+                    System.out.println("Cantidad de digitos: " + digitos);
+                    System.out.println("Cantidad de simbolos: " + simbolos);
+                    System.out.println("Suma de los digitos: " + sumadigitos);
+                    
+                    break;
+
+                    }
+                    
+              
+                case 3:
+                    
+                    System.out.println("\nCodigo de evacuacion");
+                    String salida = " ";
+                    boolean codvalido = false;
+
+          
+                    while (!codvalido) {
+                        System.out.print("\nIngrese el codigo de evacuacion: ");
+                        salida = leer.nextLine();
+
+                    
+                        if (salida.length() == 0) {
+                            System.out.println("el codigo no puede estar vacio. intente de nuevo");
+                            continue; 
+                        }
+
+                     
+                        if (salida.length() % 2 != 0) {
+                            System.out.println("cada direccion debe tener un numero. intente de nuevo");
+                            continue;
+                        }
+
+                        salida = salida.toLowerCase();
+                        boolean error = false;
+
+                      
+                        for (int i = 0; i < salida.length(); i = i + 2) {
+                            char dir = salida.charAt(i);
+                            char num = salida.charAt(i + 1);
+
+                    
+              
             }
+            
        
         }
         
       
     }
-    
+        }
+    }
 }
+        
+
+
